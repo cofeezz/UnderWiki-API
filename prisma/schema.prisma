@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  articles  Article[]
+  edits     Edit[]
+
+  @@map("users")
+}
+
+model Artist {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  slug        String   @unique
+  genre       String?
+  origin      String?
+  formedYear  Int?
+  bio         String?  @db.Text
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  articles    Article[]
+
+  @@map("artists")
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   @db.LongText
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+
+  artistId  Int
+  artist    Artist   @relation(fields: [artistId], references: [id])
+
+  edits     Edit[]
+
+  @@map("articles")
+}
+
+model Edit {
+  id        Int      @id @default(autoincrement())
+  summary   String?
+  createdAt DateTime @default(now())
+
+  editorId  Int
+  editor    User     @relation(fields: [editorId], references: [id])
+
+  articleId Int
+  article   Article  @relation(fields: [articleId], references: [id])
+
+  @@map("edits")
+}
