@@ -1,8 +1,8 @@
-# 🎸 Underground Wiki API
+# Underground Wiki API
 
 Uma API REST para uma Wikipedia colaborativa dedicada a artistas underground e independentes. Qualquer pessoa pode ler sobre os artistas, mas para contribuir com artigos é necessário criar uma conta.
 
-## 🛠 Tecnologias
+## Aplicações
 
 - **Node.js** + **Express** — servidor HTTP
 - **Prisma** — ORM
@@ -15,7 +15,7 @@ Uma API REST para uma Wikipedia colaborativa dedicada a artistas underground e i
 
 ---
 
-## 📦 Como instalar e rodar localmente
+## Como instalar e rodar localmente
 
 ### Pré-requisitos
 - Node.js 18+
@@ -25,7 +25,7 @@ Uma API REST para uma Wikipedia colaborativa dedicada a artistas underground e i
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/underground-wiki-api.git
+git clone https://github.com/seu-usuarioUnderWiki-API.git
 cd underground-wiki-api
 
 # 2. Instale as dependências
@@ -50,7 +50,7 @@ O servidor estará rodando em `http://localhost:3333`
 
 ---
 
-## 🗂 Estrutura do projeto
+## Estrutura
 
 ```
 underground-wiki/
@@ -80,9 +80,9 @@ underground-wiki/
 
 ---
 
-## 🔗 Endpoints
+## Endpoints
 
-### 🔐 Autenticação — `/api/auth`
+### Autenticação — `/api/auth`
 
 | Método | Rota | Auth | Descrição |
 |--------|------|------|-----------|
@@ -94,15 +94,15 @@ underground-wiki/
 ```json
 POST /api/auth/register
 {
-  "username": "joaorock",
-  "email": "joao@email.com",
-  "password": "senha123"
+  "username": "joaozinho",
+  "email": "joaozinhogames123@email.com",
+  "password": "games123"
 }
 ```
 
 ---
 
-### 🎵 Artistas — `/api/artists`
+### Artistas — `/api/artists`
 
 | Método | Rota | Auth | Descrição |
 |--------|------|------|-----------|
@@ -133,7 +133,7 @@ Authorization: Bearer <token>
 
 ---
 
-### 📝 Artigos — `/api/articles`
+### Artigos — `/api/articles`
 
 | Método | Rota | Auth | Descrição |
 |--------|------|------|-----------|
@@ -145,7 +145,7 @@ Authorization: Bearer <token>
 
 ---
 
-### 👤 Usuários — `/api/users`
+### Usuários — `/api/users`
 
 | Método | Rota | Auth | Descrição |
 |--------|------|------|-----------|
@@ -155,7 +155,7 @@ Authorization: Bearer <token>
 
 ---
 
-## 🔒 Autenticação
+## Autenticação
 
 Rotas protegidas requerem o header:
 ```
@@ -166,7 +166,7 @@ O token é retornado no body do `/register` e do `/login`.
 
 ---
 
-## 🗃 Modelos do banco
+## Modelos do banco
 
 - **User** — `id, username, email, password, createdAt`
 - **Artist** — `id, name, slug, genre, origin, formedYear, bio, imageUrl`
